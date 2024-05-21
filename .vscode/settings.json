@@ -1,6 +1,7 @@
 {
   "conventionalCommits.scopes": [
     "Creación del proyecto",
-    "Creación del SideNac"
+    "Creación del SideNac",
+    "Creación categoria"
   ]
 }
