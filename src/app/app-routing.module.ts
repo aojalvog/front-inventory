@@ -12,6 +12,7 @@ const routes: Routes = [
     {enableTracing: false, useHash: true}
   ),
 DashboardRoutingModule
+
 ],
   exports: [RouterModule]
 })
