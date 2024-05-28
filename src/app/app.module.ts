@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardModule
+    DashboardModule, 
+    NgChartsModule
   ],
   providers: [
     provideAnimationsAsync()
