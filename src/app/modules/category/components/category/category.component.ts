@@ -89,6 +89,7 @@ this.openSnackBar("Se produjo un error al actualizar la categoría", "Error");
       this.processCategoriesResponse(resp);
     })
   }
+  
 
   delete(id:any){
     const dialogRef = this.dialog.open(ConfirmComponent, {
@@ -127,8 +128,25 @@ this.openSnackBar("Se produjo un error al crear la categoría", "Error");
       duration: 2000
     })
   }
-}
 
+  exportExcel(){
+
+    this.categoryService.exportCategories().subscribe((data:any)=> {
+      let file = new Blob([data], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+      let fileUrl = URL.createObjectURL(file);
+      var anchor = document.createElement("a");
+      anchor.download = "categories.xlsx";
+      anchor.href = fileUrl;
+      anchor.click();
+
+      this.openSnackBar("Archivo exportado correctamente", "Éxito");
+    }, (error:any) => {
+      this.openSnackBar("Error al exportar el archivo", "Error");
+    })
+
+  }
+}
+// aqui clave
 export interface CategoryElement{
   id: number;
   name: string;

@@ -123,7 +123,22 @@ this.openSnackBar("Se produjo un error al guardar el producto", "Error");
         })
   }
 
-  
+  exportExcel(){
+
+    this.productService.exportProducts().subscribe((data:any)=> {
+      let file = new Blob([data], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+      let fileUrl = URL.createObjectURL(file);
+      var anchor = document.createElement("a");
+      anchor.download = "products.xlsx";
+      anchor.href = fileUrl;
+      anchor.click();
+
+      this.openSnackBar("Archivo exportado correctamente", "Éxito");
+    }, (error:any) => {
+      this.openSnackBar("Error al exportar el archivo", "Error");
+    })
+
+  }
 
 }
 
